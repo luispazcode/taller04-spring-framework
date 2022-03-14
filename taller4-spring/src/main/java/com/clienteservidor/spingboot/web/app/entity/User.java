@@ -53,7 +53,7 @@ public class User implements Serializable{
 	@Column
 	private String password;
 	
-	@NotBlank
+
 	@Transient
 	private String confirmPassword;
 	
