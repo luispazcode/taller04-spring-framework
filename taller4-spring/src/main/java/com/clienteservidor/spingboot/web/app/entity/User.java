@@ -14,6 +14,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -31,15 +33,27 @@ public class User implements Serializable{
 	private Long id;
 	
 	@Column
+	@NotBlank
+	@Size(min=3,max=10,message="Fuera de los limites de tamano")
 	private String firstName;
+	
+	@NotBlank
 	@Column
 	private String lastName;
+	
+	@NotBlank
 	@Column
 	private String email;
+	
+	@NotBlank
 	@Column
 	private String username;
+	
+	@NotBlank
 	@Column
 	private String password;
+	
+	@NotBlank
 	@Transient
 	private String confirmPassword;
 	

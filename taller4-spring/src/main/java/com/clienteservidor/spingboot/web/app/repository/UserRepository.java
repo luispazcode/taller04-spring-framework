@@ -1,5 +1,6 @@
 package com.clienteservidor.spingboot.web.app.repository;
 
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.data.repository.CrudRepository;
@@ -10,6 +11,6 @@ import com.clienteservidor.spingboot.web.app.entity.User;
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
 	
-	//public Set<User> findByUsername(String username);
+	public Optional<User> findByUsername(String username);
 
 }
