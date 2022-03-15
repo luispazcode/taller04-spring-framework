@@ -5,7 +5,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.clienteservidor.spingboot.web.app.dto.ChangePasswordForm;
 import com.clienteservidor.spingboot.web.app.entity.User;
 import com.clienteservidor.spingboot.web.app.repository.UserRepository;
 
@@ -79,26 +78,6 @@ public class UserServiceImpl implements UserService{
 		User user = getUserById(id);
 		
 		repository.delete(user);
-	}
-
-	@Override
-	public User changePassword(ChangePasswordForm form) throws Exception {
-		User user = getUserById(form.getId());
-		
-		if(!user.getPassword().equals(form.getCurrentPassword())) {
-			throw new Exception("Current password invalido");
-		}
-		if(user.getPassword().equals(form.getNewPassword())) {
-			throw new Exception("El password nuevo debe ser diferente al actual");
-		}
-		if(!form.getNewPassword().equals(form.getConfirmPassword())) {
-			throw new Exception ("Confirm password Incorrecto");
-		}
-		
-		user.setPassword(form.getNewPassword());
-		
-		return repository.save(user);
-	
 	}
 
 }
